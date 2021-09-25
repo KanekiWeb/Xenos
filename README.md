@@ -1,5 +1,5 @@
 <p align='center'>
-  <b>🐦 Follow me here 🐦</b><br>  
+  <b>🐺 Follow me here 🐺</b><br>  
   <a href="https://discord.gg/kaneki">Discord</a> |
   <a href="https://www.youtube.com/channel/UC-XII5SSqbMOF1UX3N0Gl8g">YouTube</a> |
   <a href="https://github.com/KanekiWeb">Github</a><br><br>
@@ -25,7 +25,7 @@
 - Auto Inject
 - Simple Usage
 - Easy Manager with UI
-- Auto Checker Token
+- Nitro Sniper
 - Manage User/Token
 - Filter by Badges/Username
 - Soon Raid Panel and more
