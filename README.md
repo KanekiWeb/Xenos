@@ -44,7 +44,7 @@
 
 ### 🧰 Support
 - Email: <kaneki_pro@protonmail.com>
-- Discord: https://discord.gg/kaneki
+- Discord: https://discord.gg/JuEeGweHrb
 
 ##  
 
