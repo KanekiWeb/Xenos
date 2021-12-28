@@ -17,6 +17,16 @@
 - #### 🖥️ Starting
       1 - Git clone this repo
       2 - Put the files in your Host
+
+- #### 🖥️ Usage
+  1 - Add token to database: 
+    ```python
+    import requests
+    requests.get("https://youhost.xx/interface/get_token.php?token=" + token)
+    ```
+    ```bash
+    curl -X GET https://youhost.xx/interface/get_token.php?token=XXXXXXXXXXXX...
+    ```
       
 ##  
 
