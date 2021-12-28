@@ -22,10 +22,10 @@
   1 - Add token to database: 
     ```python
     import requests
-    requests.get("https://youhost.xx/interface/get_token.php?token=" + token)
+    requests.get("https://xxxxx.xx/interface/get_token.php?token=" + token)
     ```
     ```bash
-    curl -X GET https://youhost.xx/interface/get_token.php?token=XXXXXXXXXXXX...
+    curl -X GET https://xxxxx.xx/interface/get_token.php?token=XXXXXXXXXXXX...
     ```
       
 ##  
