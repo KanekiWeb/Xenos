@@ -1,5 +1,10 @@
 <?php
     require_once('database.php');
+    $login_password = "PASSWORD FOR SIGN IN";
+    $api_password = "PASSWORD FOR API";
+
+    $logs_webhook = "LOGS WEBHOOK";
+    $api_webhook = "API WEBHOOK";
 
     function CheckLogin(){
         if(isset($_SESSION['token'])) {
