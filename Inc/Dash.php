@@ -29,7 +29,7 @@
             </a>
             <div class="header_links">
                 <ul class="nav_links">
-                    <li class="nav_link"><a href="#">Accueil</a></li>
+                    <li class="nav_link"><a href="index">Accueil</a></li>
                     <li class="nav_link"><a href="tokens">Tokens</a></li>
                 </ul>
             </div>
