@@ -659,3 +659,16 @@ footer a {
     cursor: pointer;
     margin: 10px 0 20px;
 }
+
+.delete_zombie {
+    outline: none;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(113 25 27);
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 80%;
+    padding: 13px 0;
+    transition: 0.2s all;
+    box-shadow: 0 0 20px 1px #04061d;
+}
