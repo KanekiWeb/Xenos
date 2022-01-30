@@ -20,7 +20,7 @@
                 <button type="submit">Login</button>
                 <?php
                     if($_GET['error'] == "invalid") {
-                        echo "<p>Invalid Password</p>";
+                        echo "<p style='color: red;'>Invalid Password</p>";
                     }
                 ?>
             </form>
