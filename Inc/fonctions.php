@@ -6,6 +6,8 @@
     $logs_webhook = "LOGS WEBHOOK";
     $api_webhook = "API WEBHOOK";
 
+    $base_url = "BASE URL/IP OF YOUR HOST";
+
     function CheckLogin(){
         if(isset($_SESSION['token'])) {
             return true;
