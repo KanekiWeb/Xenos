@@ -19,7 +19,7 @@
                 <input type="password" name="password" placeholder="Enter Access Password ...">
                 <button type="submit">Login</button>
                 <?php
-                    if($_GET['error'] == "invalid") {
+                    if(isset($_GET['error']) && $_GET['error'] == "invalid") {
                         echo "<p style='color: red;'>Invalid Password</p>";
                     }
                 ?>
