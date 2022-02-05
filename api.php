@@ -133,7 +133,7 @@
         $reponse['message'] = 'Invalid Request type: addtoken/removetoken/fetchtoken';
     }
     
-    if(strpos($_SERVER['HTTP_REFERER'], $base_url)) {
+    if(isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], $base_url)) {
         header('Location: '. $_SERVER['HTTP_REFERER']); die();
     } else {        
         echo json_encode($reponse);
