@@ -39,7 +39,7 @@
 > 3. Make your database ip,databse name,username,password in the file `Inc/database.php`
 > 4. Setup your passwords and webhooks in `INC/functions.php`
 > 5. Make your host adress in `Grabber/python/Xenos.py` at line 5
-> 6. Compte and Obfusque your Grabber and send it to your victime :)
+> 6. compile and Obfusque your Grabber and send it to your victime :)
 
 > 7. Put a stars and follow me for more :)
 
@@ -63,7 +63,7 @@
 > - ### Tokens Page
 > ![](https://cdn.discordapp.com/attachments/924736351855849562/926064389650530354/unknown.png)
 > - ### Youtube Demo for Gays
-> [![](https://cdn.discordapp.com/attachments/935005435323351091/940059351459201106/Xenos.png)](https://www.youtube.com/watch?v=mQNPhPwYFmc)
+> [![](https://cdn.discordapp.com/attachments/935005435323351091/940059351459201106/Xenos.png)](https://www.youtube.com/watch?v=4JfiFdiOCUk&ab_channel=KanekiWeb)
 
 <p align="center">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contribution Welcome">
