@@ -63,7 +63,7 @@
 > - ### Tokens Page
 > ![](https://cdn.discordapp.com/attachments/924736351855849562/926064389650530354/unknown.png)
 > - ### Youtube Demo for Gays
-> [![](https://cdn.discordapp.com/attachments/935005435323351091/940059351459201106/Xenos.png)](https://www.youtube.com/watch?v=4JfiFdiOCUk&ab_channel=KanekiWeb)
+> [![](https://cdn.discordapp.com/attachments/935005435323351091/940059351459201106/Xenos.png)](https://youtu.be/z6EE8zTYKhQ)
 
 <p align="center">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contribution Welcome">
