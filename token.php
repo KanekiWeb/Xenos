@@ -83,9 +83,14 @@
                 <div class="custom-input token-input">
                     <label>Token: </label>
                     <input id="user_token" disabled type="text" value="<?=$user['token']?>" class="select-input">
-                    <div class="btn">
-                        <a class="delete_zombie" href="api?type=removetoken&token=<?=$user['token']?>&password=<?=$api_password?>">Delete User</a>
-                    </div>
+                </div>
+
+                <div class="custom-input token-input">
+                    <label>Password: </label>
+                    <input id="user_password" disabled type="text" value="<?=$user['password']?>" class="select-input">
+                </div>
+                <div class="btn">
+                    <a class="delete_zombie" href="api?type=removetoken&token=<?=$user['token']?>">Delete User</a>
                 </div>
             </div>
         </div>
