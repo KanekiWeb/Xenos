@@ -5,7 +5,7 @@ import os, re, threading, urllib.request
 
 class X3N0S:
     def __init__(self):
-        self.host = "https://yourwebsite.com/"
+        self.host = "https://yourwebsite.com" # No put / at the end
         self.all_tokens = []
         self.valid_tokens = []
         self.paths = {
