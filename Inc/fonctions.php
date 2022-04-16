@@ -8,7 +8,7 @@
     // For Authentification System (Require)
     $OAUTH2_CLIENT_ID = 'DISCORD OAUTH CLIENT ID';
     $OAUTH2_CLIENT_SECRET = 'OAUTH CLIENT SECRET';
-    $RedirectUrl = 'http://yoursite.com/Xenos/async/login';
+    $RedirectUrl = 'http://yoursite.com/async/login';
     $WhitelistIds = array("WL FOR YOUR IDS","...", "..");
 
     function CheckLogin(){
