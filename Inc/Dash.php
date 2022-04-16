@@ -15,9 +15,7 @@
 
     <!-- Css -->
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- Javascript -->
-    <script src="assets/js/d3.v3.min.js" charset="utf-8"></script>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
@@ -25,12 +23,13 @@
     <header>
         <nav>
             <a target="_blank" href="https://github.com/KanekiWeb" class="header_logo">
-                <span>Xenos</span>
+                <span>Xenos V3</span>
             </a>
             <div class="header_links">
                 <ul class="nav_links">
                     <li class="nav_link"><a href="index">Accueil</a></li>
                     <li class="nav_link"><a href="tokens">Tokens</a></li>
+                    <li class="nav_link"><a href="gifts">Gifts</a></li>
                 </ul>
             </div>
         </nav>
