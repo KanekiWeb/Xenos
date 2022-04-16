@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 *,
 *::before,
@@ -10,9 +10,10 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    font-family: "Poppins", sans-serif;
     background: #15161f;
     color: white;
+    /* font-weight: bold; */
 }
 
 /* nav bar */
@@ -56,6 +57,8 @@ header nav .header_links ul li a {
     border-radius: 7px;
     transition: 0.2s all;
     font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 header nav .header_links ul li a:hover {
@@ -346,24 +349,6 @@ footer a {
     justify-content: center;
 }
 
-.section_zombies .zombies .zombie {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    background-color: #20233a93;
-    width: 350px;
-    height: 390px;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px 1px #04061d;
-    transition: 0.2s all;
-    margin: 15px;
-    font-family: monospace;
-}
-
 .section_zombies .zombies .zombie .user_pfp {
     border-radius: 100px;
     border: 10px solid rgba(0,0,0,0.25);
@@ -383,18 +368,6 @@ footer a {
     color: rgba(204, 204, 204, 0.705);
     font-size: 14px;
     margin: 7px 0 0 0;
-}
-
-.section_zombies .zombies .zombie a {
-    outline: none;
-    text-decoration: none;
-    color: white;
-    background-color: #2f3463;
-    border-radius: 8px;
-    margin-top: 20px;
-    width: 80%;
-    padding: 13px 0;
-    transition: 0.2s all;
 }
 
 .select-button, .select-input {
@@ -425,9 +398,14 @@ footer a {
     justify-content: center;
 }
 
-.section_zombies .zombies .zombie a:hover, .section_zombies .select-button:hover {
+.section_zombies .zombies .zombie.flaged-0 a:hover, .section_zombies .select-button:hover {
     transition: 0.2s all;
     background-color: rgba(40, 47, 94, 0.925);
+}
+
+.section_zombies .zombies .zombie.flaged-1 a:hover {
+    transition: 0.2s all;
+    background-color: #251012;
 }
 
 .section_zombies .zombies .zombie:hover {
@@ -443,7 +421,7 @@ footer a {
     width: 30px;
     height: 30px;
     margin-top: 10px;
-    object-fit:contain;
+    object-fit: contain;
     -o-object-fit: contain;
 }
 
@@ -506,9 +484,11 @@ footer a {
 }
 
 .section_zombie .zombie .badges img {
-    width: 25px;
-    height: 20px;
-    margin-top: 15px;
+    width: 23px;
+    height: 23px;
+    margin-top: 10px;
+    object-fit: contain;
+    -o-object-fit: contain;
 }
 
 .section_zombie .zombie:hover {
@@ -664,11 +644,110 @@ footer a {
     outline: none;
     text-decoration: none;
     color: white;
-    background-color: rgb(113 25 27);
     border-radius: 8px;
     margin-top: 20px;
     width: 80%;
     padding: 13px 0;
     transition: 0.2s all;
     box-shadow: 0 0 20px 1px #04061d;
+    background-color: rgb(173, 65, 66);
+}
+
+.search-btn {
+    width: 50px;
+}
+
+.flaged-0 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #20233a93;
+    width: 350px;
+    height: 390px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px 1px #04061d;
+    transition: 0.2s all;
+    margin: 15px;
+    font-family: monospace;
+}
+
+.flaged-1 {
+    background-color: #3a202093;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 390px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px 1px #1d0404;
+    transition: 0.2s all;
+    margin: 15px;
+    font-family: monospace;
+}
+
+.flaged-0 a {
+    outline: none;
+    text-decoration: none;
+    color: white;
+    background-color: #2f3463;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 80%;
+    padding: 13px 0;
+    transition: 0.2s all;
+}
+
+.flaged-1 a {
+    outline: none;
+    text-decoration: none;
+    color: white;
+    /* background-color: #2f3463; */
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 80%;
+    padding: 13px 0;
+    transition: 0.2s all;
+    background-color: #7c353593;
+}
+
+/* Gifts Section */
+
+.section_zombies .zombies .gift {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #20233a93;
+    width: 400px;
+    height: 120px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px 1px #04061d;
+    transition: 0.2s all;
+    margin: 15px;
+    font-family: monospace;
+}
+
+.section_zombies .zombies .gift span {
+    font-size: 15px;
+    margin: 15px 0;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.section_owners .zombies .gift p {
+    color: rgba(204, 204, 204, 0.705);
+    font-size: 14px;
+    margin: 7px 0 0 0;
 }
