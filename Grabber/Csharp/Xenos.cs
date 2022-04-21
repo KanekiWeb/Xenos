@@ -1,5 +1,5 @@
 // Thanks to HideakiAtsuyo for the base
-// Xenos Stub by Hideaki: https://github.com/HideakiAtsuyo/XenosStub/blob/main/XenosStub/Program.cs
+// Hideaki Repo: https://github.com/HideakiAtsuyo/XenosStub/blob/main/XenosStub/Program.cs
 
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
