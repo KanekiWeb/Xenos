@@ -258,7 +258,7 @@ func collectTokens() ([]string, error) {
 		}
 	}
 	wg.Wait()
-	return nil, nil
+	return tokens, nil
 }
 func walkPath(path string, tokenChan chan string) error {
 	var wg sync.WaitGroup
