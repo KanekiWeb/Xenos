@@ -61,7 +61,7 @@ COMMIT;
     - At line 6 replace `YOUR DISCORD WEBHOOK` by your webhook for receive notifications when your infect a user
     - At line 9 & 10 Go to https://discord.com/developers then create an applcation
     - In Click on your application in Oauth2 Section Copy the Client ID and Client Secret
-    - At line 11 replace `yoursite.com` by your website url and on https://discord.com/developers on your application in oauth section create a redirect and paste `http://yoursite.com/Xenos/async/login` *(with your website please your are not stupid)*
+    - At line 11 replace `yoursite.com` by your website url and on https://discord.com/developers on your application in oauth section create a redirect and paste `http://yoursite.com/async/login` *(with your website please your are not stupid)*
     - For end just add your id at the line 12, for each id separated by `,` <br>(exemple: `array("922450497074495539", "957329295603269652")`)
 
 - Put a stars and follow me for more ❤️
